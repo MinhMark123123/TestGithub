@@ -3,7 +3,6 @@ TestGithub
  private void load() {
         final String url = "http://dev.vietbuzzad.net/kfcvietnam/api/getsession";
         final String cookie = getSharedPreferences("cookie_manager", MODE_PRIVATE).getString("cookie", null);
-
         new AsyncTask() {
             @Override
             protected Object doInBackground(Object[] params) {
@@ -14,7 +13,6 @@ TestGithub
                             .url(url)
                             .build();
                 } else {
-
                     request = new Request.Builder()
                             .header("Set-Cookie",cookie)
                             .addHeader("Set-Cookie",cookie)
@@ -26,9 +24,7 @@ TestGithub
                     Log.d("send", request.headers().toString());
                     Log.d("send", request.toString());
                     response = client.newCall(request).execute();
-
                     String reposeString = response.body().string();
-
                     Log.d("received", reposeString);
                     Log.e("received", response.headers().toString());
                     Headers headers = response.headers();
@@ -55,6 +51,4 @@ TestGithub
                 return null;
             }
         }.execute();
-
-
     }
